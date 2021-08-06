@@ -1,0 +1,20 @@
+sudo groupadd ideal						- создаём новую группу
+
+whoami - текущее имя пользователя 				- узнаём текущее имя пользователя
+    sudo usermod -a -G ideal [полученное имя]			- добавляет текущего пользователя в группу
+   
+sudo mkdir /home/maxim_files					- создаём директорию
+sudu useradd -s /bin/bash -d /home/maxim_files maxim		- добавляем нового пользователя, указываем директорию и среду по умолчанию
+sudo passwd maxim						- устанавливаем пароль
+   
+sudo usermod -a -G ideal maxim				- добавляем пользователя в группу
+sudo mkdir -p /var/ideal/source				- создаём директорию
+
+sudo cat > /var/ideal/source/README.md			- создаём новый файл -> вводим текст `# Ideal Project` -> ctrl+d
+    
+sudo chgrp -R /var/ideal/					- меняем группу директории
+    chmod g-х /var/ideal/					- убираем возможность исполнения для группы
+    chmod g+rw /var/ideal/					- добавляем возможность чтения и записи для группы
+    chmod o-wx /var/ideal/					- убираем возможность исполнения и записи для других пользователей.
+    chmod o+r /var/ideal/					- добавляем возможность чтения для других пользователей
+    ls -Rl . | grep "^d"					- выводим директории и поддиректории
